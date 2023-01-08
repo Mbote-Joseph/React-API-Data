@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import Card from './Card'
 
 function App() {
 //   const [count, setCount] = useState(0)
@@ -25,6 +26,7 @@ function App() {
 //   Click on the Vite and React logos to learn more
 // </p>
   const [name, setName]= useState([]);
+  let click=false
 
   useEffect(() => {
     names()
@@ -39,15 +41,25 @@ function App() {
 
   return (
     <div className="App">
+
+    <h1>Fetched Data</h1>
     <ol>
 
     {
       name.map((data)=>{
         return(
-          <div className="card" key={data.id}>
+         
+          <div className="card" key={data.id} onClick={()=> click = !click } >
+
+          
           <span>{data.id}</span>
           <span className="name"> {data.title}</span>
+          
+          <Card id={data.id} text={data.title} />
+        
+
           </div>
+          
         )
       })
     }
